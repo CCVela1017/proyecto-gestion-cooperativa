@@ -54,9 +54,14 @@ def main_window():
     ib_pay_plan.pack(pady=100, padx=10)
     ib_pay_plan.place(x=150, y=210)
 
+    ib_file_name = customtkinter.CTkEntry(master=frame, placeholder_text='Nombre del archivo',
+                                         width=160)
+    ib_file_name.pack(pady=100, padx=10)
+    ib_file_name.place(x=510, y=210)
+
     listbox_files = CTkListbox(frame, width=270)
     listbox_files.pack(fill='both', expand=True, padx=10, pady=10)
-    listbox_files.place(y=210, x=510)
+    listbox_files.place(y=250, x=510)
 
     listbox_files.insert(0, "Option 0")
     listbox_files.insert(1, "Option 1")
@@ -65,11 +70,11 @@ def main_window():
 
     bt_crear = customtkinter.CTkButton(frame, width=490, height=35, text='Crear Prestamo', font=("Times New Roman", 20))
     bt_crear.pack(pady=10, padx=10)
-    bt_crear.place(x=10, y=300)
+    bt_crear.place(x=10, y=260)
 
     boton_add2 = customtkinter.CTkButton(master=frame, text='+', font=("Times New Roman", 40, "bold"), width=55)
     boton_add2.pack(pady=400, padx=400)
-    boton_add2.place(x=815, y=210)
+    boton_add2.place(x=815, y=250)
 
 
 

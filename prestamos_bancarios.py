@@ -1,5 +1,4 @@
 import customtkinter
-import prestamos
 from prestamos import pay_loan
 from prestamos import request_loan
 from prestamos import view_aprove_loan
@@ -54,6 +53,3 @@ def main_window():
     frame.pack()
     root.geometry('800x450')
     root.mainloop()
-
-
-main_window()

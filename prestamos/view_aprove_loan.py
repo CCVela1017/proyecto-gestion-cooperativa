@@ -10,7 +10,7 @@ def cargar_datos():
     ventana = customtkinter.CTkToplevel()
     ventana.grab_set()
     ventana.title("Mostrar y aprobar prestamos")
-    ventana.geometry('1150x700')
+    ventana.geometry('1150x600')
     return ventana
 
 
@@ -19,6 +19,25 @@ def main_window():
     frame = frame1(ventana)
     color = "#3E4446"
     labels_parte1(frame)
+
+    tb_state = customtkinter.CTkEntry(master=frame, font=("Times New Roman", 20), width=200,
+                                      placeholder_text='', state='disabled')
+    tb_state.pack(pady=400, padx=400, )
+    tb_state.place(x=250, y=50)
+
+    bt_aproove = customtkinter.CTkButton(frame, width=440, height=35, text='Aprobar prestamo', font=("Times New Roman", 20))
+    bt_aproove.pack(pady=10, padx=10)
+    bt_aproove.place(x=10, y=90)
+
+    bt_process = customtkinter.CTkButton(frame, width=440, height=35, text='Marcar como "En curso"',
+                                         font=("Times New Roman", 20))
+    bt_process.pack(pady=10, padx=10)
+    bt_process.place(x=10, y=130)
+
+    bt_finish = customtkinter.CTkButton(frame, width=440, height=35, text='Marcar como finalizado',
+                                         font=("Times New Roman", 20), fg_color='#5E2129')
+    bt_finish.pack(pady=10, padx=10)
+    bt_finish.place(x=10, y=170)
 
     style = ttk.Style()
     style.theme_use('default')
@@ -33,9 +52,9 @@ def main_window():
     style.map('Treeview',
               background=[('selected', '#347083')])
 
-    tree_frame = Frame(frame, height=50)
+    tree_frame = Frame(frame)
     tree_frame.pack(pady=70)
-    tree_frame.place(x=10, y=120)
+    tree_frame.place(x=10, y=350)
 
     tree_scroll = Scrollbar(tree_frame)
     tree_scroll.pack(side=RIGHT, fill=Y)
@@ -88,6 +107,7 @@ def main_window():
                                    record[4], record[5], record[6], record[7], record[8]), tags=('oddrow',))
         count += 1
 
+
 def frame1(ventana):
     frame = customtkinter.CTkFrame(master=ventana, height=800)
     frame.pack(pady=10, padx=60, fill='both', ipady=100)
@@ -100,8 +120,15 @@ def labels_parte1(frame):
     lb_title.pack(pady=400, padx=400, )
     lb_title.place(x=300, y=0)
 
-    lb_loan_code = customtkinter.CTkLabel(master=frame, text='Lista de prestamos', font=("Times New Roman", 20))
+    lb_state = customtkinter.CTkLabel(master=frame, text='Estado actual del prestamo: ',
+                                      font=("Times New Roman", 20))
+    lb_state.pack(pady=400, padx=400, )
+    lb_state.place(x=10, y=50)
+
+    lb_loan_code = customtkinter.CTkLabel(master=frame, text='Lista de prestamos '
+                                                             '(seleccione una fila para realizar cambios)',
+                                          font=("Times New Roman", 20))
     lb_loan_code.pack(pady=400, padx=400, )
-    lb_loan_code.place(x=10, y=60)
+    lb_loan_code.place(x=10, y=240)
 
 
