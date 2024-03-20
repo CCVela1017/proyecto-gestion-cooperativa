@@ -1,7 +1,8 @@
 import customtkinter
 import random
 from CTkListbox import *
-
+from prestamos.loan import Loan
+from data_structures.double_list import DoubleList
 
 def cargar_datos():
     customtkinter.set_appearance_mode('dark')
@@ -10,7 +11,7 @@ def cargar_datos():
     ventana = customtkinter.CTkToplevel()
     ventana.grab_set()
     ventana.title("Solicitar prestamo")
-    ventana.geometry('1000x400')
+    ventana.geometry('1000x450')
     return ventana
 
 
@@ -19,6 +20,10 @@ def main_window():
     frame = frame1(ventana)
     color = "#3E4446"
     labels_parte1(frame)
+    loans = DoubleList[Loan]()
+
+    def create_loan():
+        new_loan = Loan(ib_associate_code.get(), ib_amount.get())
 
     code = random.randint(1, 1000)
 
@@ -50,12 +55,17 @@ def main_window():
     ib_warranty.pack(pady=100, padx=10)
     ib_warranty.place(x=600, y=160)
 
-    ib_pay_plan = customtkinter.CTkEntry(master=frame, placeholder_text='Plan de pago', width=180, height=35)
-    ib_pay_plan.pack(pady=100, padx=10)
-    ib_pay_plan.place(x=150, y=210)
+    ib_pay_plan = CTkListbox(frame, width=115)
+    ib_pay_plan.pack(fill='both', expand=True, padx=10, pady=10)
+    ib_pay_plan.place(x=185, y=210)
+    ib_pay_plan.insert(0, "6 Meses")
+    ib_pay_plan.insert(1, "12 Meses")
+    ib_pay_plan.insert(2, "18 Meses")
+    ib_pay_plan.insert(3, "24 Meses")
+    ib_pay_plan.insert('END', "36 Meses")
 
     ib_file_name = customtkinter.CTkEntry(master=frame, placeholder_text='Nombre del archivo',
-                                         width=160)
+                                          width=160)
     ib_file_name.pack(pady=100, padx=10)
     ib_file_name.place(x=510, y=210)
 
@@ -68,16 +78,14 @@ def main_window():
     listbox_files.insert(2, "Option 2")
     listbox_files.insert('END', "Option 3")
 
-    bt_crear = customtkinter.CTkButton(frame, width=490, height=35, text='Crear Prestamo', font=("Times New Roman", 20))
+    bt_crear = customtkinter.CTkButton(frame, width=490, height=35, text='Crear Prestamo',
+                                       font=("Times New Roman", 20), command=create_loan)
     bt_crear.pack(pady=10, padx=10)
-    bt_crear.place(x=10, y=260)
+    bt_crear.place(x=10, y=350)
 
     boton_add2 = customtkinter.CTkButton(master=frame, text='+', font=("Times New Roman", 40, "bold"), width=55)
     boton_add2.pack(pady=400, padx=400)
     boton_add2.place(x=815, y=250)
-
-
-
 
 def frame1(ventana):
     frame = customtkinter.CTkFrame(master=ventana, height=800)
@@ -86,7 +94,7 @@ def frame1(ventana):
 
 
 def labels_parte1(frame):
-    lb_title = customtkinter.CTkLabel(master=frame, text='Solicitar prestamo',
+    lb_title = customtkinter.CTkLabel(master=frame, text='Solicitar Préstamo',
                                       font=("Times New Roman", 30, "bold"))
     lb_title.pack(pady=400, padx=400, )
     lb_title.place(x=300, y=0)
