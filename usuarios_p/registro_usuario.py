@@ -1,7 +1,7 @@
 import tkinter  # En esta parte se importo lo necesario
 import customtkinter
-from data_structures.double_list import DoubleList
-from class_usuario import Usuarios
+from data_structures.list import List
+from usuarios_p.class_usuario import Usuarios
 import random
 
 customtkinter.set_appearance_mode("dark")
@@ -10,7 +10,7 @@ customtkinter.set_default_color_theme("blue")
 
 def registrar(listausuario: List):  # En esta parte se creo la funcion para mostrar la ventana de registro
     regis = customtkinter.CTk()
-    regis.title("Regristro de usuarios")
+    regis.title("Regristro de usuarios_p")
     regis.geometry("800x400")
     lista_usuarios = listausuario
 

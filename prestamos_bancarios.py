@@ -4,9 +4,6 @@ from prestamos import request_loan
 from prestamos import view_aprove_loan
 from data_structures.double_list import DoubleList
 
-
-root = customtkinter.CTk()
-
 loans = None
 
 
@@ -46,12 +43,14 @@ def main_window(list_loans: DoubleList):
     customtkinter.set_appearance_mode('dark')
     customtkinter.set_default_color_theme('dark-blue')
 
+    root = customtkinter.CTkToplevel()
+
     global loans
     loans = list_loans
 
     root.title("Menú de Prestamos Bancarios")
+    root.grab_set()
     frame = customtkinter.CTkFrame(master=root)
-    root.wm_attributes("-topmost", False)
     frame.pack(pady=10, padx=10, fill='both', expand=True)
     frame2 = customtkinter.CTkFrame(master=frame, fg_color="#212121", width=50)
     frame2.pack(pady=10, padx=8, fill='both', expand=True, side='right')

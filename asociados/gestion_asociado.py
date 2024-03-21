@@ -2,17 +2,20 @@ import customtkinter
 from tkinter import filedialog
 from data_structures.list import List
 import random
-from asociado import Asociado
+from asociados.asociado import Asociado
 
-
-
-gestion = List[Asociado]()
+gestion: List[Asociado]
 ref = List[str]()
+
+ventana = customtkinter.CTk()  # Crea ventana principal
+ventana2 = customtkinter.CTk()
 
 
 def cerrar_ventana1():
     ventana.withdraw()  # ocultar ventana 1
     ventana2.deiconify()
+
+
 def agregar_referencia():
     w3 = customtkinter.CTkToplevel()
     w3.configure(background="white")
@@ -28,15 +31,6 @@ def agregar_referencia():
     telefono = customtkinter.CTkEntry(w3, placeholder_text="Número de teléfono")
     telefono.pack()
 
-    boton_guardar = customtkinter.CTkButton(w3, text="Guardar", command=lambda: cerrar_y_mostrar(w3))
-    boton_guardar.pack()
-
-def cerrar_y_mostrar(ventana):
-    ventana.destroy()
-    ventana2.deiconify()  # Mostrar la ventana de datos
-
-
-
 def eliminar_referencia():
     w4 = customtkinter.CTkToplevel()
     w4.configure(background="white")
@@ -48,9 +42,6 @@ def eliminar_referencia():
 
     nombre = customtkinter.CTkEntry(w4, placeholder_text="Nombre y Apellido") #Entrada para ingreso de dato
     nombre.pack()
-
-    eliminar = customtkinter.CTkButton(w4, text="Eliminar", command=lambda: cerrar_y_mostrar(w4))
-    eliminar.pack()
 
 def actualizar_datos():
     w5 = customtkinter.CTkToplevel()
@@ -66,12 +57,6 @@ def actualizar_datos():
 
     nuevo = customtkinter.CTkEntry(w5, placeholder_text="Nuevos datos")
     nuevo.pack()
-
-    actualizar = customtkinter.CTkButton(w5, text="Actualizar", command=lambda: cerrar_y_mostrar(w5))
-    actualizar.pack()
-
-
-
 
 def registrar():
     ventana.withdraw()
@@ -110,29 +95,36 @@ def registrar():
     entrada10 = customtkinter.CTkEntry(w2, placeholder_text="2. Numero de telefono")
     entrada10.pack()
 
+    global gestion
+
     boton3 = customtkinter.CTkButton(w2, text="Guardar", command=lambda: guardar_registro(codigo, entrada1.get(), entrada2.get(),
                                                                             entrada3.get(), entrada4.get(), entrada5.get()
                                                                             , entrada6.get(), entrada7.get(), entrada8.get()
-                                                                            , entrada9.get(), entrada10.get()))  # Lambda funcion anonima que permite guardar unicamente cuando se presiona el boton
+                                                                            , entrada9.get(), entrada10.get(), gestion))  # Lambda funcion anonima que permite guardar unicamente cuando se presiona el boton
     boton3.pack()
 
     boton4 = customtkinter.CTkButton(w2, text="Mostrar", command=mostrar)
     boton4.pack()
 
 
-
 # Funcion que guarda el registro
-def guardar_registro(codigo, nombre, direccion, tel1, tel2, dpi, nit, ref1, ref1_telf, ref2, ref2_tel):
+def guardar_registro(codigo, nombre, direccion, tel1, tel2, dpi, nit, ref1, ref1_telf, ref2, ref2_tel, gestion2: List):
     asociado = Asociado(codigo, nombre, direccion, tel1, tel2, dpi, nit, ref1, ref1_telf, ref2, ref2_tel)
+
+    global gestion
+    gestion = gestion2
+
     gestion.append(asociado)
 
 
 def mostrar():  # funcion que imprime los datos
-    ventana.destroy()
     h = customtkinter.CTkToplevel()
     h.configure(background="white")
     h.title("DATOS")
     h.geometry("650x400")
+
+    global gestion
+
     for asociado in gestion:
         texto = (f"Código: {asociado.codigo}, Nombre: {asociado.nombre}, Direccion: {asociado.direccion} "
                       f", Telefonos de contacto: {asociado.tel1} / {asociado.tel2}, DPI: {asociado.dpi}, "
@@ -144,9 +136,9 @@ def mostrar():  # funcion que imprime los datos
         boton5.pack()
 
 
-
 def cargar_archivo():
     archivo = filedialog.askopenfilename(initialdir="/", title="Seleccionar Archivo", filetypes=(("Archivos de Texto", "*.txt"), ("Todos los archivos", "*.*")))
+
     if archivo:
         # Agregar solo el nombre del archivo a la lista gestion
         gestion.append(archivo.split("/")[-1])
@@ -159,43 +151,43 @@ def mostrar_archivo():
     m.configure(background="white")
     m.title("ARCHIVOS SUBIDOS")
     m.geometry("650x400")
+
+    global gestion
+
     for archivo in gestion:
         texto = f"Archivo: {archivo}"
         d = customtkinter.CTkLabel(m, text=texto)
         d.pack()
 
 
-ventana = customtkinter.CTk()  # Crea ventana principal
-ventana.title("Gestion de asociados")  # Le pone titulo
-ventana.geometry("400x400")  # dimensiones de la ventana
-ventana.configure(bg="grey")  # se establece color de fondo
+def main_asociado(gestion2: List):
+    ventana.title("Gestion de asociados")  # Le pone titulo
+    ventana.geometry("400x400")  # dimensiones de la ventana
+    ventana.configure(bg="grey")  # se establece color de fondo
 
-boton = customtkinter.CTkButton(ventana, text="Nuevos Asociados", command=cerrar_ventana1)
-boton.pack()
+    global gestion
+    gestion = gestion2
 
-# Abrir Menu
-ventana2 = customtkinter.CTk()
-ventana2.configure(background="white")
-ventana2.title("REGISTRO")
-ventana2.geometry("650x400")
-mensaje = customtkinter.CTkLabel(ventana2, text="Menu")
-mensaje.pack()
-boton1 = customtkinter.CTkButton(ventana2, text="Registrar", command=registrar)  # boton para registrar
-boton1.pack()
-boton2 = customtkinter.CTkButton(ventana2, text="Almacenar", command=cargar_archivo)  # boton para almacenar
-boton2.pack()
-boton3 = customtkinter.CTkButton(ventana2, text="Agregar referencia", command=agregar_referencia)
-boton3.pack()
-boton4 = customtkinter.CTkButton(ventana2, text="Eliminar referencia", command=eliminar_referencia)
-boton4.pack()
-boton5 = customtkinter.CTkButton(ventana2, text="Actualizar datos de sus asociados", command=actualizar_datos)
-boton5.pack()
-boton7 = customtkinter.CTkButton(ventana2, text="Mostrar datos", command=mostrar)
-boton7.pack()
-boton6 = customtkinter.CTkButton(ventana2, text="Salir", command=ventana2.destroy)
-boton6.pack()
+    boton = customtkinter.CTkButton(ventana, text="Nuevos Asociados", command=cerrar_ventana1)
+    boton.pack()
 
+    # Abrir Menu
+    ventana2.configure(background="white")
+    ventana2.title("REGISTRO")
+    ventana2.geometry("650x400")
+    mensaje = customtkinter.CTkLabel(ventana2, text="Menu")
+    mensaje.pack()
+    boton1 = customtkinter.CTkButton(ventana2, text="Registrar", command=registrar)  # boton para registrar
+    boton1.pack()
+    boton2 = customtkinter.CTkButton(ventana2, text="Almacenar", command=cargar_archivo)  # boton para almacenar
+    boton2.pack()
+    boton3 = customtkinter.CTkButton(ventana2, text="Agregar referencia", command=agregar_referencia)
+    boton3.pack()
+    boton4 = customtkinter.CTkButton(ventana2, text="Eliminar referencia", command=eliminar_referencia)
+    boton4.pack()
+    boton5 = customtkinter.CTkButton(ventana2, text="Actualizar datos de sus asociados", command=actualizar_datos)
+    boton5.pack()
+    boton7 = customtkinter.CTkButton(ventana2, text="Mostrar datos", command=mostrar)
+    boton7.pack()
 
-ventana.mainloop()
-
-
+    ventana.mainloop()

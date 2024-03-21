@@ -9,7 +9,7 @@ customtkinter.set_default_color_theme("blue")
 
 def visualizar(listausuario: DoubleList):  # En esta parte se creo la funcion para mostrar la ventana de vizualizar
     visu = customtkinter.CTk()
-    visu.title("Regristro de usuarios")
+    visu.title("Regristro de usuarios_p")
     visu.geometry("800x400")
     lista_usuarios = listausuario
 

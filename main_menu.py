@@ -2,12 +2,16 @@ import customtkinter
 import prestamos_bancarios
 from prestamos.loan import Loan
 from data_structures.double_list import DoubleList
-import usuarios
-import gestion_asociados
-
+from data_structures.list import List
+from usuarios_p.class_usuario import Usuarios
+from usuarios import main_user
+from asociados.asociado import Asociado
+from asociados.gestion_asociado import main_asociado
 root = customtkinter.CTk()
 
 loans = DoubleList[Loan]()
+users = DoubleList[Usuarios]()
+asociados = List[Asociado]()
 
 
 def open_prestamos():
@@ -16,11 +20,13 @@ def open_prestamos():
 
 
 def open_users():
-    pass
+    global users
+    main_user(users)
 
 
 def open_asociados():
-    pass
+    global asociados
+    main_asociado(asociados)
 
 
 def buttons(frame, frame2):

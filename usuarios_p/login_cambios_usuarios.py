@@ -1,14 +1,14 @@
 import tkinter   # En esta parte se importo lo necesario
 import customtkinter
 from data_structures.double_list import DoubleList
-from datos_usuario import cambio_datos
-from cambio_contraseñas_usuarios import cambio_contrasena
+from usuarios_p.datos_usuario import cambio_datos
+from usuarios_p.cambio_contraseñas_usuarios import cambio_contrasena
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 
 
-def login_cambios(listausuario: List):  # En esta parte se creo la funcion para mostrar la ventana de cambios
+def login_cambios(listausuario: DoubleList):  # En esta parte se creo la funcion para mostrar la ventana de cambios
     login = customtkinter.CTk()
     login.title("Login")
     login.geometry("800x400")
