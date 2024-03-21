@@ -5,6 +5,12 @@ from tkinter import messagebox
 from prestamos.loan import Loan
 from data_structures.double_list import DoubleList
 from data_structures.list import List
+'''
+Se importaron módulos
+tkinter y customtkinter: diseño
+estructuras vistas en clase: doble lista, lista simple
+listbox: parte del diseño
+'''
 
 # Lista de prestamos (global)
 loans = None
@@ -37,12 +43,14 @@ def main_window(list_prestamos: DoubleList):
     # Código al azar de préstamo
     code_ln = str(random.randint(1, 5000))
 
-    #
+    # Obtenemos nombre de archivo desde el entry
     def obtener_archivo():
         text = ib_file_name.get()
+        # Añadimos los archivos al listbox
         listbox_files.insert('END', text)
         files.append(text)
 
+    # Creación del loan (se activa al presionar el boton)
     def create_loan():
         associate_code = ib_associate_code.get()
         amount = ib_amount.get()
@@ -50,15 +58,21 @@ def main_window(list_prestamos: DoubleList):
         income = ib_monthly_income.get()
         garantia = ib_warranty.get()
         plan = ib_pay_plan.get()
+        # Se obtienen datos de los entry
 
+        # Se verifica que no hayan casillas vacías
         if associate_code == '' or amount == '' or fee_num == '' or income == '' or garantia == '' or plan == '':
             messagebox.showwarning('Sin ingreso', 'Algunas de las casillas estan en blanco')
         else:
+            # Se crea un nuevo prestamo con los datos
             new_loan = Loan(code_ln, associate_code, int(amount), int(fee_num), 'Creado',
                             int(income), garantia, files, plan)
+            # Se envía el prestamo a la lista
             loans.append(new_loan)
             ventana.destroy()
             messagebox.showinfo('Datos ingresados', 'Todos los datos del prestamo se ingresaron correctamente')
+
+    # Complementos de diseño (listbox, labels con datos cambiantes, y entradas)
 
     lb_loan_code2 = customtkinter.CTkLabel(master=frame, font=("Times New Roman", 20), text=code_ln)
     lb_loan_code2.pack(pady=400, padx=400, )
@@ -87,8 +101,10 @@ def main_window(list_prestamos: DoubleList):
     ib_warranty.pack(pady=100, padx=10)
     ib_warranty.place(x=600, y=160)
 
+    # Listbox
     ib_pay_plan = CTkListbox(frame, width=115)
     ib_pay_plan.pack(fill='both', expand=True, padx=10, pady=10)
+    # Se separan los elementos
     ib_pay_plan.place(x=185, y=210)
     ib_pay_plan.insert(0, "6 Meses")
     ib_pay_plan.insert(1, "12 Meses")
