@@ -1,13 +1,18 @@
 import customtkinter
 import prestamos_bancarios
+from prestamos.loan import Loan
+from data_structures.double_list import DoubleList
 import usuarios
 import gestion_asociados
 
 root = customtkinter.CTk()
 
+loans = DoubleList[Loan]()
+
 
 def open_prestamos():
-    prestamos_bancarios.main_window()
+    global loans
+    prestamos_bancarios.main_window(loans)
 
 
 def open_users():

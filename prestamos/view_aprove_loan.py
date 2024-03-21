@@ -1,6 +1,13 @@
 import customtkinter
-from tkinter import ttk
+from data_structures.double_list import DoubleList
+from tkinter import ttk, messagebox
 from tkinter import *
+from data_structures.list import List
+from prestamos.loan import Loan
+
+
+loans = None
+item = None
 
 
 def cargar_datos():
@@ -14,28 +21,74 @@ def cargar_datos():
     return ventana
 
 
-def main_window():
+def main_window(list_loans: DoubleList):
     ventana = cargar_datos()
     frame = frame1(ventana)
     color = "#3E4446"
     labels_parte1(frame)
 
-    tb_state = customtkinter.CTkEntry(master=frame, font=("Times New Roman", 20), width=200,
-                                      placeholder_text='', state='disabled')
-    tb_state.pack(pady=400, padx=400, )
-    tb_state.place(x=250, y=50)
+    def get_selection(event):
+        y = event.y
+        global item
+        item = int(my_tree_2.identify_row(y))
+        state_row = data.find_at(item).data[2]
+        lb_state = customtkinter.CTkLabel(master=frame, text=state_row,
+                                          font=("Times New Roman", 20), )
+        lb_state.pack(pady=400, padx=400, )
+        lb_state.place(x=250, y=50)
+        if state_row == 'Aprobado':
+            bt_finish._state = 'normal'
+            bt_process._state = 'normal'
+            bt_aproove._state = 'disabled'
+        elif state_row == 'En curso':
+            bt_finish._state = 'normal'
+            bt_aproove._state = 'disabled'
+            bt_process._state = 'disabled'
+        elif state_row == 'Finalizado':
+            bt_finish._state = 'disabled'
+            bt_process._state = 'disabled'
+            bt_aproove._state = 'disabled'
 
-    bt_aproove = customtkinter.CTkButton(frame, width=440, height=35, text='Aprobar prestamo', font=("Times New Roman", 20))
+    def aproove():
+        if item is None:
+            messagebox.showwarning('Sin selección', 'Debe seleccionar una fila para modificarla')
+        else:
+            loans.search_by_index(item).data.state_loan = 'Aprobado'
+            messagebox.showinfo('Accion finalizada', 'El prestamo ha sido aprobado')
+            ventana.destroy()
+
+    def end_process():
+        if item is None:
+            messagebox.showwarning('Sin selección', 'Debe seleccionar una fila para modificarla')
+        else:
+            loans.search_by_index(item).data.state_loan = 'Finalizado'
+            messagebox.showinfo('Accion finalizada', 'El prestamo ha sido establecido como Finalizado')
+            ventana.destroy()
+
+    def process():
+        if item is None:
+            messagebox.showwarning('Sin selección', 'Debe seleccionar una fila para modificarla')
+        else:
+            loans.search_by_index(item).data.state_loan = 'En curso'
+            messagebox.showinfo('Accion finalizada', 'El prestamo ha sido establecido como "en curso"')
+            ventana.destroy()
+
+
+    global loans
+    loans = list_loans
+
+    bt_aproove = customtkinter.CTkButton(frame, width=440, height=35,
+                                         text='Aprobar prestamo', font=("Times New Roman", 20), command=aproove)
     bt_aproove.pack(pady=10, padx=10)
     bt_aproove.place(x=10, y=90)
 
     bt_process = customtkinter.CTkButton(frame, width=440, height=35, text='Marcar como "En curso"',
-                                         font=("Times New Roman", 20))
+                                         font=("Times New Roman", 20), command=process)
     bt_process.pack(pady=10, padx=10)
     bt_process.place(x=10, y=130)
 
     bt_finish = customtkinter.CTkButton(frame, width=440, height=35, text='Marcar como finalizado',
-                                         font=("Times New Roman", 20), fg_color='#5E2129')
+                                         font=("Times New Roman", 20), fg_color='#5E2129', command=end_process)
     bt_finish.pack(pady=10, padx=10)
     bt_finish.place(x=10, y=170)
 
@@ -92,9 +145,14 @@ def main_window():
     my_tree_2.tag_configure('oddrow', background='white')
     my_tree_2.tag_configure('evenrow', background='lightblue')
 
+    my_tree_2.bind("<ButtonRelease-1>", get_selection)
+
     count = 0
 
-    data = []
+    data = List()
+    for i in loans:
+        data.append([i.code_loan, i.code_associate, i.state_loan, i.amount_request,
+                     i.nu_dues, i.amount_approved, i.income_associate, i.warranty, i.plan])
 
     for record in data:
         if count % 2 == 0:

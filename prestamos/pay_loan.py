@@ -1,9 +1,11 @@
 from tkinter import ttk
 from tkinter import *
 import customtkinter
+from data_structures.double_list import DoubleList
 import random
 from CTkListbox import *
 
+loans = None
 
 def cargar_datos():
     customtkinter.set_appearance_mode('dark')
@@ -16,11 +18,14 @@ def cargar_datos():
     return ventana
 
 
-def main_window():
+def main_window(loan_list: DoubleList):
     ventana = cargar_datos()
     frame = frame1(ventana)
     color = "#3E4446"
     labels_parte1(frame)
+
+    global loans
+    loans = loan_list
 
     ib_monto = customtkinter.CTkEntry(master=frame, placeholder_text='Monto de pago',
                                          width=100)
@@ -81,6 +86,7 @@ def main_window():
 
     my_tree.tag_configure('oddrow', background='white')
     my_tree.tag_configure('evenrow', background='lightblue')
+
 
 
 def frame1(ventana):

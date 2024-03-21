@@ -1,4 +1,4 @@
-from data_structures.node import Node
+from data_structures.double_node import Node
 from typing import TypeVar, Generic
 
 T = TypeVar('T')

@@ -1,8 +1,12 @@
 import customtkinter
 import random
 from CTkListbox import *
+from tkinter import messagebox
 from prestamos.loan import Loan
 from data_structures.double_list import DoubleList
+from data_structures.list import List
+
+loans = None
 
 def cargar_datos():
     customtkinter.set_appearance_mode('dark')
@@ -15,22 +19,44 @@ def cargar_datos():
     return ventana
 
 
-def main_window():
+def main_window(list_prestamos: DoubleList):
     ventana = cargar_datos()
     frame = frame1(ventana)
     color = "#3E4446"
     labels_parte1(frame)
-    loans = DoubleList[Loan]()
+
+    global loans
+    loans = list_prestamos
+
+    files = List()
+
+    code_ln = str(random.randint(1, 5000))
+
+    def obtener_archivo():
+        text = ib_file_name.get()
+        listbox_files.insert('END', text)
+        files.append(text)
 
     def create_loan():
-        new_loan = Loan(ib_associate_code.get(), ib_amount.get())
+        associate_code = ib_associate_code.get()
+        amount = ib_amount.get()
+        fee_num = ib_fee_num.get()
+        income = ib_monthly_income.get()
+        garantia = ib_warranty.get()
+        plan = ib_pay_plan.get()
 
-    code = random.randint(1, 1000)
+        if associate_code == '' or amount == '' or fee_num == '' or income == '' or garantia == '' or plan == '':
+            messagebox.showwarning('Sin ingreso', 'Algunas de las casillas estan en blanco')
+        else:
+            new_loan = Loan(code_ln, associate_code, int(amount), int(fee_num), 'Creado',
+                            int(income), garantia, files, plan)
+            loans.append(new_loan)
+            ventana.destroy()
+            messagebox.showinfo('Datos ingresados', 'Todos los datos del prestamo se ingresaron correctamente')
 
-    ib_loan_code = customtkinter.CTkEntry(master=frame, width=150, height=35,
-                                          state='disabled', placeholder_text=str(code))
-    ib_loan_code.pack(pady=12, padx=10)
-    ib_loan_code.place(x=185, y=60)
+    lb_loan_code2 = customtkinter.CTkLabel(master=frame, font=("Times New Roman", 20), text=code_ln)
+    lb_loan_code2.pack(pady=400, padx=400, )
+    lb_loan_code2.place(x=200, y=60)
 
     ib_associate_code = customtkinter.CTkEntry(master=frame, placeholder_text='Ingrese el código del asociado',
                                                width=200, height=35)
@@ -73,19 +99,16 @@ def main_window():
     listbox_files.pack(fill='both', expand=True, padx=10, pady=10)
     listbox_files.place(y=250, x=510)
 
-    listbox_files.insert(0, "Option 0")
-    listbox_files.insert(1, "Option 1")
-    listbox_files.insert(2, "Option 2")
-    listbox_files.insert('END', "Option 3")
-
     bt_crear = customtkinter.CTkButton(frame, width=490, height=35, text='Crear Prestamo',
                                        font=("Times New Roman", 20), command=create_loan)
     bt_crear.pack(pady=10, padx=10)
     bt_crear.place(x=10, y=350)
 
-    boton_add2 = customtkinter.CTkButton(master=frame, text='+', font=("Times New Roman", 40, "bold"), width=55)
+    boton_add2 = customtkinter.CTkButton(master=frame, text='+', font=("Times New Roman", 40, "bold"), width=55, command=obtener_archivo)
     boton_add2.pack(pady=400, padx=400)
     boton_add2.place(x=815, y=250)
+
+    return loans
 
 def frame1(ventana):
     frame = customtkinter.CTkFrame(master=ventana, height=800)

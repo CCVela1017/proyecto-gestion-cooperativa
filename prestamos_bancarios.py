@@ -2,20 +2,27 @@ import customtkinter
 from prestamos import pay_loan
 from prestamos import request_loan
 from prestamos import view_aprove_loan
+from data_structures.double_list import DoubleList
+
 
 root = customtkinter.CTk()
 
+loans = None
+
 
 def open_view():
-    view_aprove_loan.main_window()
+    global loans
+    view_aprove_loan.main_window(loans)
 
 
 def open_pay():
-    pay_loan.main_window()
+    global loans
+    pay_loan.main_window(loans)
 
 
 def open_request():
-    request_loan.main_window()
+    global loans
+    request_loan.main_window(loans)
 
 
 def buttons(frame, frame2):
@@ -35,9 +42,12 @@ def buttons(frame, frame2):
     return
 
 
-def main_window():
+def main_window(list_loans: DoubleList):
     customtkinter.set_appearance_mode('dark')
     customtkinter.set_default_color_theme('dark-blue')
+
+    global loans
+    loans = list_loans
 
     root.title("Menú de Prestamos Bancarios")
     frame = customtkinter.CTkFrame(master=root)
@@ -53,3 +63,4 @@ def main_window():
     frame.pack()
     root.geometry('800x450')
     root.mainloop()
+
