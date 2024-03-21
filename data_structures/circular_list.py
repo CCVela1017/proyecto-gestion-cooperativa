@@ -1,5 +1,5 @@
 from typing import TypeVar, Generic
-from node import Node
+from data_structures.node import Node
 
 T = TypeVar('T')
 

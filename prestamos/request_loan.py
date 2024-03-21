@@ -6,8 +6,10 @@ from prestamos.loan import Loan
 from data_structures.double_list import DoubleList
 from data_structures.list import List
 
+# Lista de prestamos (global)
 loans = None
 
+# Función para cargar datos a ventana de CTK
 def cargar_datos():
     customtkinter.set_appearance_mode('dark')
     customtkinter.set_default_color_theme('dark-blue')
@@ -19,6 +21,7 @@ def cargar_datos():
     return ventana
 
 
+# Creación de función principal donde se cargará todo
 def main_window(list_prestamos: DoubleList):
     ventana = cargar_datos()
     frame = frame1(ventana)
@@ -28,10 +31,13 @@ def main_window(list_prestamos: DoubleList):
     global loans
     loans = list_prestamos
 
+    # Lista de nombres de archivo
     files = List()
 
+    # Código al azar de préstamo
     code_ln = str(random.randint(1, 5000))
 
+    #
     def obtener_archivo():
         text = ib_file_name.get()
         listbox_files.insert('END', text)
@@ -110,13 +116,16 @@ def main_window(list_prestamos: DoubleList):
 
     return loans
 
+
 def frame1(ventana):
+    # Creación del frame central
     frame = customtkinter.CTkFrame(master=ventana, height=800)
     frame.pack(pady=10, padx=60, fill='both', ipady=100)
     return frame
 
 
 def labels_parte1(frame):
+    # Labels del diseño (frame: frame central)
     lb_title = customtkinter.CTkLabel(master=frame, text='Solicitar Préstamo',
                                       font=("Times New Roman", 30, "bold"))
     lb_title.pack(pady=400, padx=400, )
