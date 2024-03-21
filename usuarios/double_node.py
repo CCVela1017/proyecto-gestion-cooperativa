@@ -12,24 +12,29 @@ class Node(Generic[T]):
         self.__prev: Node | None = prev_node
 
     @property
+    def next(self):
+        return self.__next
+
+    @next.setter
+    def next(self, new_next: Node[T]):
+        self.__next = new_next
+
+    @property
     def data(self):
         return self.__data
 
-    @property
-    def next(self):
-        return self.__next
+    @data.setter
+    def data(self, value):
+        self.__data = value
 
     @property
     def prev(self):
         return self.__prev
 
     @prev.setter
-    def prev(self, new_prev: Node[T]):
-        self.__prev = new_prev
-
-    @next.setter
-    def next(self, new_next: Node[T]):
-        self.__next = new_next
+    def prev(self, value: T):
+        self.__prev = value
 
     def __str__(self):
         return str(self.__data)
+

@@ -1,6 +1,6 @@
 import tkinter   # En esta parte se importo lo necesario
 import customtkinter
-from listadobleenlace import List
+from data_structures.double_list import DoubleList
 from datos_usuario import cambio_datos
 from cambio_contraseñas_usuarios import cambio_contrasena
 

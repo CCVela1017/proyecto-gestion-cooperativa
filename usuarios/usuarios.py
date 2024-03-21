@@ -2,7 +2,6 @@ import tkinter  # En esta parte se importo lo necesario
 import customtkinter
 from registro_usuario import registrar
 from visualizar_usuarios import visualizar
-from listadobleenlace import List
 from class_usuario import Usuarios
 from deshabilitar_usuario import desabilitar
 from login_cambios_usuarios import login_cambios

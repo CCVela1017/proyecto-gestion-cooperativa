@@ -2,19 +2,19 @@ from tkinter import ttk  # En esta parte se importo lo necesario
 from tkinter import *
 import tkinter
 import customtkinter
-from listadobleenlace import List
+from data_structures.double_list import DoubleList
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 
 
-def desabilitar(listausuario: List):  # En esta parte se creo la funcion para mostrar la ventana de desavilitar
+def cambio_datos(listausuario: DoubleList):  # En esta parte se creo la funcion para mostrar la ventana de datos
     visu = customtkinter.CTk()
-    visu.title("Desabilitar usuario")
+    visu.title("Cambio datos")
     visu.geometry("800x400")
     lista_usuarios = listausuario
 
-    style = ttk.Style()   # En esta parte se le da estilos a la tabla que se va a crear
+    style = ttk.Style()  # En esta parte se le da estilos a la tabla que se va a crear
     style.theme_use('default')
     style.configure('Treeview',
                     background='#D3D3D3',
@@ -34,14 +34,14 @@ def desabilitar(listausuario: List):  # En esta parte se creo la funcion para mo
     tree_scroll = Scrollbar(tree_frame)
     tree_scroll.pack(side=RIGHT, fill=Y)
 
-    tabla_visual = ttk.Treeview(tree_frame, yscrollcommand=tree_scroll.set, selectmode='extended')   # Se crea la tabla
+    tabla_visual = ttk.Treeview(tree_frame, yscrollcommand=tree_scroll.set, selectmode='extended')  # Se crea la tabla
     tabla_visual.pack()
 
     tree_scroll.config(command=tabla_visual.yview)
 
     tabla_visual['columns'] = ('Codigo', 'Nombres', 'Correos', 'Contraseñas', 'Puestos', 'Estado')
 
-    tabla_visual.heading('#0', text='', anchor=W)  # Se configuran todos los heading
+    tabla_visual.heading('#0', text='', anchor=W)   # Se configuran todos los heading
     tabla_visual.heading('Codigo', text='Codigo', anchor=W)
     tabla_visual.heading('Nombres', text='Nombres', anchor=W)
     tabla_visual.heading('Correos', text='Correos', anchor=W)
@@ -78,27 +78,39 @@ def desabilitar(listausuario: List):  # En esta parte se creo la funcion para mo
                                 tags=('oddrow',))
         count += 1
 
-    nombre_completo = customtkinter.CTkLabel(master=visu, text="Codigo actual")  # En esta parte se crean los Label y
-    # Entry para colocar el correo nombre y contraseña en su sitio
-    nombre_completo.place(relx=0.15, rely=0.75, anchor=tkinter.CENTER)
+    codigo = customtkinter.CTkLabel(master=visu, text="Codigo actual")  # En esta parte se crean los Label y Entry
+    # para colocar el correo nombre y contraseña en su sitio
+    codigo.place(relx=0.15, rely=0.65, anchor=tkinter.CENTER)
 
-    cambio_estado = customtkinter.CTkEntry(master=visu)
-    cambio_estado.place(relx=0.35, rely=0.75, anchor=tkinter.CENTER)
+    codig = customtkinter.CTkEntry(master=visu)
+    codig.place(relx=0.35, rely=0.65, anchor=tkinter.CENTER)
 
-    def activar():  # Función para activar
+    nombre = customtkinter.CTkLabel(master=visu, text="Nombre")
+    nombre.place(relx=0.15, rely=0.75, anchor=tkinter.CENTER)
+
+    cambio_nombre = customtkinter.CTkEntry(master=visu)
+    cambio_nombre.place(relx=0.35, rely=0.75, anchor=tkinter.CENTER)
+
+    correo = customtkinter.CTkLabel(master=visu, text="Correo")
+    correo.place(relx=0.15, rely=0.85, anchor=tkinter.CENTER)
+
+    cambio_correo = customtkinter.CTkEntry(master=visu)
+    cambio_correo.place(relx=0.35, rely=0.85, anchor=tkinter.CENTER)
+
+    puesto = customtkinter.CTkLabel(master=visu, text="Puesto")
+    puesto.place(relx=0.15, rely=0.95, anchor=tkinter.CENTER)
+
+    cambio_puesto = customtkinter.CTkEntry(master=visu)
+    cambio_puesto.place(relx=0.35, rely=0.95, anchor=tkinter.CENTER)
+
+    def activar():  # Función para hacer los cambios a la lista
         for camb_estado_activo in lista_usuarios:
-            if int(camb_estado_activo.codigo) == int(cambio_estado.get()):
-                camb_estado_activo.estado = 'Activo'
+            if int(camb_estado_activo.codigo) == int(codig.get()):
+                camb_estado_activo.nombre = cambio_nombre.get()
+                camb_estado_activo.correo = cambio_correo.get()
+                camb_estado_activo.puesto = cambio_puesto.get()
 
-    def desactivar():  # Función para desactivar
-        for cambio_estado_inactivo in lista_usuarios:
-            if int(cambio_estado_inactivo.codigo) == int(cambio_estado.get()):
-                cambio_estado_inactivo.estado = 'Inactivo'
-
-    boton_activo = customtkinter.CTkButton(master=visu, text="Activar", command=activar)  # Boton para llamar la acción
+    boton_activo = customtkinter.CTkButton(master=visu, text="Cambiar", command=activar)  # Boton para llamar la acción
     boton_activo.place(relx=0.55, rely=0.75, anchor=tkinter.CENTER)
-
-    boton_inactivo = customtkinter.CTkButton(master=visu, text="Desactivar", command=desactivar)
-    boton_inactivo.place(relx=0.75, rely=0.75, anchor=tkinter.CENTER)
 
     visu.mainloop()  # Para iniciar la ventana

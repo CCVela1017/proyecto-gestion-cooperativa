@@ -1,6 +1,6 @@
 import customtkinter
 from tkinter import filedialog
-from list import List
+from data_structures.list import List
 import random
 from asociado import Asociado
 

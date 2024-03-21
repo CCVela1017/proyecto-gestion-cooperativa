@@ -1,6 +1,6 @@
 import tkinter  # En esta parte se importo lo necesario
 import customtkinter
-from listadobleenlace import List
+from data_structures.double_list import DoubleList
 from class_usuario import Usuarios
 import random
 

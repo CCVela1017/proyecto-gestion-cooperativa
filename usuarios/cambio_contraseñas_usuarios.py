@@ -2,13 +2,13 @@ from tkinter import ttk   # En esta parte se importo lo necesario
 from tkinter import *
 import tkinter
 import customtkinter
-from listadobleenlace import List
+from data_structures.double_list import DoubleList
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 
 
-def cambio_contrasena(listausuario: List):  # En esta parte se creo la funcion para mostrar la ventana de contraseñas
+def cambio_contrasena(listausuario: DoubleList):  # En esta parte se creo la funcion para mostrar la ventana de contraseñas
     visu = customtkinter.CTk()
     visu.title("Cambio contraseña")
     visu.geometry("800x400")

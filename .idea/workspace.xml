@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d9e293f7-4329-4543-9059-c85b065f8031" name="Changes" comment="Av">
+      <change afterPath="$PROJECT_DIR$/asociados/asociado.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asociados/gestion_asociado.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/cambio_contraseñas_usuarios.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/class_usuario.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/datos_usuario.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/deshabilitar_usuario.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/double_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/double_node.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/login_cambios_usuarios.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/registro_usuario.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/usuarios.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usuarios/visualizar_usuarios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/proyecto-gestion-cooperativa.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asociado.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cambio_contraseñas_usuarios.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class_usuario.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datos_usuario.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deshabilitar_usuario.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion_asociado.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listadobleenlace.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login_cambios_usuarios.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_usuario.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizar_usuarios.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="usuarios" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/usuarios/cambio_contraseñas_usuarios.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2dkgSGzmzV2dGZIGGuDX1XsI2Rg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Carlos Vela/Desktop/tarea/Progra Avanzada/Estructuras de Datos/proyecto-gestion-cooperativa/usuarios&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Carlos Vela\Desktop\tarea\Progra Avanzada\Estructuras de Datos\proyecto-gestion-cooperativa\usuarios" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main_menu">
+    <configuration name="main_menu" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="proyecto-gestion-cooperativa" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Carlos Vela\Desktop\tarea\Progra Avanzada\Estructuras de Datos\proyecto-gestion-cooperativa\main_menu.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prestamos" type="PythonConfigurationType" factoryName="Python">
+      <module name="proyecto-gestion-cooperativa" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Carlos Vela\Desktop\tarea\Progra Avanzada\Estructuras de Datos\proyecto-gestion-cooperativa\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11 (proyecto-gestion-cooperativa)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prestamos_bancarios.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main_menu" />
+      <item itemvalue="Python.prestamos" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d9e293f7-4329-4543-9059-c85b065f8031" name="Changes" comment="" />
+      <created>1710557488052</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710557488052</updated>
+    </task>
+    <servers />
+  </component>
+</project>
